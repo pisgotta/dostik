@@ -1,4 +1,4 @@
-# dostik
+# generator resheniy
 
 Кожухова Алёна Алексеевна ИСИП-413
 
