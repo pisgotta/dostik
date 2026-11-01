@@ -1,0 +1,59 @@
+#:kivy 2.1.0
+#:import dp kivy.metrics.dp
+#:import config config
+
+BoxLayout:
+    orientation: "vertical"
+    padding: config.PADDING
+    spacing: config.SPACING
+
+    Label:
+        text: "Генератор случайных решений"
+        font_size: config.FONT_SIZE_TITLE
+        size_hint_y: 0.18
+        bold: True
+        halign: "center"
+        valign: "middle"
+        text_size: self.size
+
+    Label:
+        text: "Введите варианты — каждый с новой строки:"
+        font_size: config.FONT_SIZE_TEXT
+        size_hint_y: 0.12
+        halign: "left"
+        valign: "bottom"
+        text_size: self.size
+
+    TextInput:
+        id: options_input
+        hint_text: "Например:\nЧай\nКофе"
+        multiline: True
+        font_size: config.FONT_SIZE_TEXT
+        size_hint_y: 0.42
+        background_normal: ""
+        background_color: 0.15, 0.15, 0.15, 1
+        foreground_color: 1, 1, 1, 1
+        padding: dp(12)
+        on_text_validate: app.hide_keyboard()
+
+    # Просто обычный Label. Цвет по умолчанию — белый.
+    Label:
+        id: result_label
+        text: "Нажмите кнопку, чтобы выбрать"
+        font_size: config.FONT_SIZE_TEXT
+        size_hint_y: 0.16
+        halign: "center"
+        valign: "middle"
+        text_size: self.size
+        color: 1, 1, 1, 1 
+
+    Button:
+        text: "Выбрать случайно"
+        font_size: config.FONT_SIZE_BUTTON
+        size_hint_y: 0.12
+        background_normal: ""
+        background_color: 0.2, 0.6, 0.9, 1
+        color: 1, 1, 1, 1
+        on_press: app.choose_option()
+        on_release: app.button_scale(self, 1.0)
+        on_press: app.button_scale(self, 0.95)
